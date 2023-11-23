@@ -1,0 +1,7 @@
+- initializing fx ContactArray in PhoneBook??? without dynamuc alloc
+- when should a string be const, what is the difference from a std::string
+- how to use string functions, how to compare values like !=, ==, ! etc.
+- from std::cin to const char* ??
+- get return (num of char printed) from std::cout?
+
+namespace:

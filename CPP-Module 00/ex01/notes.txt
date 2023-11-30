@@ -4,4 +4,24 @@
 - from std::cin to const char* ??
 - get return (num of char printed) from std::cout?
 
+char const vs const char?
+
+hoe to have array of a class but uninitialized as member of another class?
+
 namespace:
+
+initializations list:
+	constructor taking attributes
+	ex. contact class constructor taking attributes first name, last name etc
+	called by the phonebook::add whoch asks info from user via std::cin
+syntax:
+	contact::contact(char *fn, char *ln ...) : _firstname(fn), _lastname(ln), ...
+	
+const:
+	- initialize constant class members through the constructor
+	- const keyword after closing bracket at function declaration means the function will not alter 			
+	current instance of class
+
+compilation
+- remember include guards but all dependencies in each header
+- no function implementation in  aheader file

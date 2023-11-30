@@ -4,6 +4,8 @@
 # include <iostream>
 # include <string.h>
 
+//char const* or const char*?
+
 class Contact
 {
 public:
@@ -12,7 +14,7 @@ public:
 
     int index;
 
-    int set_contact( int );
+    int set_contact(int index);
     
     std::string get_firstname( void ) const;
     std::string get_lastname( void ) const;
@@ -21,11 +23,6 @@ public:
     std::string get_darkestsecret( void ) const;
       
 private:
-    void set_firstname( std::string );
-    void set_lastname( std::string );
-    void set_nickname( std::string );
-    void set_phonenumber( std::string );
-    void set_darkestsecret( std::string );
 
     std::string _firstname;
     std::string _lastname;

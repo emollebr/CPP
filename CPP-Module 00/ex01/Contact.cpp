@@ -8,7 +8,7 @@ Contact::Contact( void )
 int Contact::set_contact(int index )
 {
     this->index = index;
-    std::cout << "Contact constructor called" << std::endl;
+
     std::cout << "First name: " << std::endl;
     std::cin >> this->_firstname;
    
@@ -22,7 +22,7 @@ int Contact::set_contact(int index )
     std::cin >> this->_phonenumber;
 
     std::cout << "Darkest secret: "  << std::endl;
-    std::cin >> this->_phonenumber;
+    std::cin >> this->_darkestsecret;
 
     std::cout << "Contact added."  << std::endl;
     return (0);
@@ -40,4 +40,19 @@ std::string     Contact::get_lastname( void ) const
 std::string     Contact::get_nickname( void ) const
 {
     return this->_nickname;
+}
+
+std::string     Contact::get_phonenumber( void ) const
+{
+    return this->_phonenumber;
+}
+
+std::string     Contact::get_darkestsecret( void ) const
+{
+    return this->_darkestsecret;
+}
+
+Contact::~Contact( void )
+{
+    std::cout << "Contact destructor called" << std::endl;
 }

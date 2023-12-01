@@ -4,19 +4,21 @@
 
 int main( void )
 {
-    char        input[10];
+    std::string   input;
     PhoneBook   phonebook;
 
     while (1)
     {
-        std::cout << "\nPlease enter option:\n\nADD\nSEARCH\nEXIT\n" << std::endl;
+        std::cout << "\nPlease enter option:\n\nADD\nSEARCH\nEXIT\n\n" << std::endl;
         std::cin >> input;
-        if (strcmp(input, "ADD") == 0)
+        if (input == "ADD" || input == "add")
             phonebook.Add();
-        /*else if (strcmp(input, "SEARCH"))
-            phonebook.Search();*/
-        else if (strcmp(input, "EXIT") == 0)
-            phonebook.Exit();
+        else if (input == "SEARCH" || input == "search")
+            phonebook.Search();
+        else if (input == "EXIT" || input == "exit") {
+            if (phonebook.Exit() == 1)
+                break ;
+        }
         else
             std::cout << "Invalid option. \n\n" << std::endl;
     }

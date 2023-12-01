@@ -1,6 +1,8 @@
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
 #include <cstdlib>
+#include <string>
+#include <iomanip>
 
 PhoneBook::PhoneBook( void )
 {
@@ -12,27 +14,53 @@ int    PhoneBook::Add( void )
 {
     this->num_of_contacts++;
     ContactArray[this->num_of_contacts % 8].set_contact(num_of_contacts % 8);
+    DisplayContact(num_of_contacts);
+    return (0);
+}
+
+int PhoneBook::DisplayContact(int num)
+{
+    if (num > this->num_of_contacts || num < 1)
+        return(std::cout << "Invalid index" << std::endl, 1);
+    std::cout << "First name: " << this->ContactArray[num].get_firstname() << "\n";
+    std::cout << "Last name: " << this->ContactArray[num].get_lastname() << "\n";
+    std::cout << "Nickname: " << this->ContactArray[num].get_nickname() << "\n";
+    std::cout << "Phonenumber: " << this->ContactArray[num].get_phonenumber() << "\n";
+    std::cout << "Darkest secret: " << this->ContactArray[num].get_darkestsecret() << std::endl;
+    return (0);
+}
+
+ std::string truncate_string(const std::string& input, size_t width = 10)
+    {
+        if (input.length() <= width) 
+            return input;
+        else 
+            return input.substr(0, width - 1) + ".";
+    }
+
+int PhoneBook::DisplayAllContacts( void )
+{
+     std::cout << std::setw(10) << "Index" << "|" << std::setw(10) << "First Name" << "|"
+                  << std::setw(10) << "Last Name" << "|" << std::setw(10) << "Nickname" << "|" << std::endl;
+
+        for (int i = 1; i <= num_of_contacts; ++i) 
+        {
+            std::cout << std::setw(10) << i << "|"
+                      << std::setw(10) << truncate_string(ContactArray[i].get_firstname()) << "|"
+                      << std::setw(10) << truncate_string(ContactArray[i].get_lastname()) << "|"
+                      << std::setw(10) << truncate_string(ContactArray[i].get_nickname()) << "|" << std::endl;
+        }
     return (0);
 }
 
 int PhoneBook::Search( void )
 {
-    //display contacts as described in the subject
-    //prompt user for the index
-    std::string SearchIndex;
-
-    std::cout << "Index of entry to display: " << std::endl;
-    std::cin >> SearchIndex;
-
-    std::atoi(SearchIndex):
-    
-    //display given index one field per line, truncate fields that are too long
-    if (this->ContactArray[SearchIndex].get_firstname)
-    std::cout << this->ContactArray[SearchIndex].get_firstname << "\n";
-    std::cout << this->ContactArray[SearchIndex].get_lastname << "\n";
-    std::cout << this->ContactArray[SearchIndex].get_nickname << "\n";
-    std::cout << this->ContactArray[SearchIndex].get_phonenumber << "\n";
-    std::cout << this->ContactArray[SearchIndex].get_darkestsecret << std::endl;
+    DisplayAllContacts();
+    std::cout << "\nIndex of entry to display: " << std::endl;
+    int input;
+    std::cin >> input;
+    DisplayContact(input);
+    return (0);
 }
 
 int PhoneBook::Exit( void )
@@ -42,7 +70,7 @@ int PhoneBook::Exit( void )
     std::cout << "Are you sure you want to exit? All contacts will be lost.\n Enter [Y]" << std::endl;
     std::cin >> buf;
     if (strcmp(buf, "Y") == 0 || strcmp(buf, "y") == 0)
-        std::exit(0);
+        return (1);
     return (0);
 }
 

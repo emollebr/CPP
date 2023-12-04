@@ -1,8 +1,12 @@
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
+
+#include <iostream>
+#include <string.h>
 #include <cstdlib>
 #include <string>
 #include <iomanip>
+#include <sstream>
 
 PhoneBook::PhoneBook( void )
 {

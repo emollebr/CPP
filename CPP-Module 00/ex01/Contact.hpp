@@ -1,8 +1,12 @@
-#ifndef CONTACT_CLASS_HPP
+#pragma once
 # define CONTACT_CLASS_HPP
 
-# include <iostream>
-# include <string.h>
+#include <iostream>
+#include <string.h>
+#include <cstdlib>
+#include <string>
+#include <iomanip>
+#include <sstream>
 
 //char const* or const char*?
 
@@ -31,5 +35,3 @@ private:
     std::string _darkestsecret; 
     
 };
-
-#endif

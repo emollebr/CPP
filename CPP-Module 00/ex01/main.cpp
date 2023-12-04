@@ -1,6 +1,12 @@
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
-#include <cstdio>
+
+# include <iostream>
+# include <string.h>
+#include <cstdlib>
+#include <string>
+#include <iomanip>
+#include <sstream>
 
 int main( void )
 {

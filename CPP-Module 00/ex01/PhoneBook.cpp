@@ -25,12 +25,12 @@ int    PhoneBook::Add( void )
 int PhoneBook::DisplayContact(int num)
 {
     if (num > this->num_of_contacts || num < 1)
-        return(std::cout << "Invalid index" << std::endl, 1);
+        return(std::cout << "Invalid index" << "\n", 1);
     std::cout << "First name: " << this->ContactArray[num].get_firstname() << "\n";
     std::cout << "Last name: " << this->ContactArray[num].get_lastname() << "\n";
     std::cout << "Nickname: " << this->ContactArray[num].get_nickname() << "\n";
     std::cout << "Phonenumber: " << this->ContactArray[num].get_phonenumber() << "\n";
-    std::cout << "Darkest secret: " << this->ContactArray[num].get_darkestsecret() << std::endl;
+    std::cout << "Darkest secret: " << this->ContactArray[num].get_darkestsecret() << "\n";
     return (0);
 }
 
@@ -61,19 +61,19 @@ int PhoneBook::Search( void )
 {
     DisplayAllContacts();
     std::cout << "\nIndex of entry to display: " << std::endl;
-    int input;
-    std::cin >> input;
-    DisplayContact(input);
+    std::string input;
+    std::getline(std::cin, input);
+    DisplayContact(atoi(input.c_str()));
     return (0);
 }
 
 int PhoneBook::Exit( void )
 {
-    char buf[3];
+    std::string buf;
 
     std::cout << "Are you sure you want to exit? All contacts will be lost.\n Enter [Y]" << std::endl;
-    std::cin >> buf;
-    if (strcmp(buf, "Y") == 0 || strcmp(buf, "y") == 0)
+    std::getline(std::cin, buf);
+    if (buf.compare("Y") == 0 || buf.compare("y") == 0)
         return (1);
     return (0);
 }

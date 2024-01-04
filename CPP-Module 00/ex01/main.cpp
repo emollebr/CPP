@@ -16,7 +16,7 @@ int main( void )
     while (1)
     {
         std::cout << "\nPlease enter option:\n\nADD\nSEARCH\nEXIT\n\n" << std::endl;
-        std::cin >> input;
+        std::getline(std::cin, input);
         if (input == "ADD" || input == "add")
             phonebook.Add();
         else if (input == "SEARCH" || input == "search")

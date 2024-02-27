@@ -10,9 +10,9 @@ int main()
     const Animal* j = new Dog();
     const Animal* i = new Cat();
 
-    std::cout << j->getType() << " " << std::endl;
-    std::cout << i->getType() << " " << std::endl;
+    std::cout << j->getType() << " says:" << std::endl;
     i->makeSound(); //will output the cat sound!
+    std::cout << i->getType() << " says:" << std::endl;
     j->makeSound();
     meta->makeSound();
 
@@ -25,9 +25,9 @@ int main()
     const WrongAnimal* a = new WrongDog();
     const WrongAnimal* b = new WrongCat();
 
-    std::cout << a->getType() << " " << std::endl;
-    std::cout << b->getType() << " " << std::endl;
+    std::cout << a->getType() << " says:" << std::endl;
     a->makeSound(); //will output the cat sound!
+    std::cout << b->getType() << " says:" << std::endl;
     b->makeSound();
     wrong->makeSound();
 

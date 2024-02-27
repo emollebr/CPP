@@ -17,4 +17,5 @@ std::string    Animal::getType(void) const
 
 void    Animal::makeSound(void) const
 {
+    std::cout << "*animal sound*" << std::endl;
 }

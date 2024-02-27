@@ -7,20 +7,8 @@ class Cat : public Animal
 public:
     Cat( void );
     ~Cat();
+    Cat(const Cat &copy);
+    Cat& operator=(const Cat &other);
+
+    void makeSound(void) const;
 };
-
-Cat::Cat( void ) : Animal()
-{
-    type = "Cat";
-    std::cout << "Cat was created" << std::endl;
-}
-
-Cat::~Cat()
-{
-    std::cout << "Cat killed" << std::endl;
-}
-
-void    Animal::makeSound(void) const
-{
-    std::cout << "Miau" << std::endl;
-}

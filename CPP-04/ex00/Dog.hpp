@@ -7,20 +7,8 @@ class Dog : public Animal
 public:
     Dog( void );
     ~Dog();
+    Dog(const Dog &copy);
+    Dog& operator=(const Dog &other);
+
+    void makeSound(void) const;
 };
-
-Dog::Dog( void ) : Animal()
-{
-    type = "Dog";
-    std::cout << "Dog was created" << std::endl;
-}
-
-Dog::~Dog()
-{
-    std::cout << "Dog killed" << std::endl;
-}
-
-void    Animal::makeSound(void) const
-{
-    std::cout << "Woof woof" << std::endl;
-}

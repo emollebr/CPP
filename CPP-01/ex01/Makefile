@@ -9,11 +9,12 @@ OBJS := $(SRCS:.cpp=.o)
 
 all: $(NAME)
 
-${NAME}: ${OBJS}
-	${C} ${CFLAGS} ${INC} $^ -o ${NAME}
+$(NAME): $(OBJS)
+	c++ $(CFLAGS) $(OBJS) -o $(NAME)
 
-.cpp.o: ${SRCS}
-	${C} ${CFLAGS} ${INC} -c -o $@ $<
+%.o: %.cpp
+	c++ $(CFLAGS) -c $< -o $@
+
 clean:
 	   rm -f ${OBJS}
 
@@ -21,3 +22,4 @@ fclean:	clean
 	   rm -f ${NAME} ${OBJS}
 
 re: clean all
+

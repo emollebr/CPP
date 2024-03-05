@@ -1,6 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emollebr <emollebr@student.42berlin.d      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/29 10:41:03 by emollebr          #+#    #+#             */
+/*   Updated: 2024/02/29 10:41:04 by emollebr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
-
 #include <iostream>
 #include <string.h>
 #include <cstdlib>
@@ -16,15 +27,15 @@ PhoneBook::PhoneBook( void )
 
 int    PhoneBook::Add( void )
 {
-    this->num_of_contacts++;
     ContactArray[this->num_of_contacts % 8].set_contact(num_of_contacts % 8);
-    DisplayContact(num_of_contacts);
+    DisplayContact(num_of_contacts % 8);
+    this->num_of_contacts++;
     return (0);
 }
 
 int PhoneBook::DisplayContact(int num)
 {
-    if (num > this->num_of_contacts || num < 1)
+    if (num > this->num_of_contacts || num < 0 || num > 7)
         return(std::cout << "Invalid index" << "\n", 1);
     std::cout << "First name: " << this->ContactArray[num].get_firstname() << "\n";
     std::cout << "Last name: " << this->ContactArray[num].get_lastname() << "\n";
@@ -34,20 +45,19 @@ int PhoneBook::DisplayContact(int num)
     return (0);
 }
 
- std::string truncate_string(const std::string& input, size_t width = 10)
-    {
-        if (input.length() <= width) 
-            return input;
-        else 
-            return input.substr(0, width - 1) + ".";
-    }
+std::string truncate_string(const std::string& input, size_t width = 10)
+{
+    if (input.length() <= width)
+        return input;
+    else
+        return input.substr(0, width - 1) + ".";
+}
 
 int PhoneBook::DisplayAllContacts( void )
 {
      std::cout << std::setw(10) << "Index" << "|" << std::setw(10) << "First Name" << "|"
                   << std::setw(10) << "Last Name" << "|" << std::setw(10) << "Nickname" << "|" << std::endl;
-
-        for (int i = 1; i <= num_of_contacts; ++i) 
+        for (int i = 0; i < 8; ++i)
         {
             std::cout << std::setw(10) << i << "|"
                       << std::setw(10) << truncate_string(ContactArray[i].get_firstname()) << "|"
@@ -70,7 +80,6 @@ int PhoneBook::Search( void )
 int PhoneBook::Exit( void )
 {
     std::string buf;
-
     std::cout << "Are you sure you want to exit? All contacts will be lost.\n Enter [Y]" << std::endl;
     std::getline(std::cin, buf);
     if (buf.compare("Y") == 0 || buf.compare("y") == 0)

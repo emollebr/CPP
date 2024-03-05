@@ -1,5 +1,5 @@
-NAME := ex00
-C := c++
+NAME := ex01
+C := c++ -g
 CFLAGS := -Wall -Wextra -Werror -std=c++98 
 INC:= -I.
 SRCS:= main.cpp Animal.cpp Dog.cpp Cat.cpp \
@@ -10,11 +10,12 @@ OBJS := $(SRCS:.cpp=.o)
 
 all: $(NAME)
 
-${NAME}: ${OBJS}
-	${C} ${CFLAGS} ${INC} $^ -o ${NAME}
+$(NAME): $(OBJS)
+	c++ $(CFLAGS) $(OBJS) -o $(NAME)
 
-.cpp.o: ${SRCS}
-	${C} ${CFLAGS} ${INC} -c -o $@ $<
+%.o: %.cpp
+	c++ $(CFLAGS) -c $< -o $@
+
 clean:
 	   rm -f ${OBJS}
 

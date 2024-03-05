@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emollebr <emollebr@student.42berlin.d      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/04 12:39:48 by emollebr          #+#    #+#             */
+/*   Updated: 2024/03/04 12:39:49 by emollebr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include <string>
 #include"Fixed.hpp"
 
-Fixed::Fixed(/* args */) : _value(0)
+Fixed::Fixed( void ) : _value(0)
 {
     std::cout << "Default constructor called" << std::endl;
 }

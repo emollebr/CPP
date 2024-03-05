@@ -1,9 +1,12 @@
 #pragma once
 # define WRONG_DOG_CLASS_HPP
 #include "WrongAnimal.hpp"
+#include "Brain.hpp"
 
 class WrongDog : public WrongAnimal
 {
+    private:
+    Brain* _brain;
 public:
     WrongDog( void );
     ~WrongDog();

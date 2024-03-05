@@ -5,9 +5,10 @@ Animal::Animal( void )
     std::cout << "Animal: constructor called" << std::endl;
 }
 
-Animal::Animal(const Animal &copy) : type(copy.type)
+Animal::Animal(const Animal &copy)
 {
      std::cout << "Animal: copy constructor called" << std::endl;
+     *this = copy;
 }
 
 Animal &Animal::operator=(const Animal &other) {

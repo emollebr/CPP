@@ -21,6 +21,11 @@ void replaceInFile(const std::string& filename, const std::string& s1, const std
         std::cerr << "Error: Unable to open input file." << std::endl;
         exit(EXIT_FAILURE);
     }
+     if (inFile.peek() == std::ifstream::traits_type::eof()) {
+        std::cout << "Error: File is empty." << std::endl;
+        inFile.close();
+        exit(EXIT_FAILURE);
+    }
 
     std::ofstream outFile((filename + ".replace").c_str());
     if (!outFile) {

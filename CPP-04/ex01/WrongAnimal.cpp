@@ -5,9 +5,10 @@ WrongAnimal::WrongAnimal( void )
     std::cout << "WrongAnimal constructed" << std::endl;
 }
 
-WrongAnimal::WrongAnimal(const WrongAnimal &copy) : type(copy.type)
+WrongAnimal::WrongAnimal(const WrongAnimal &copy)
 {
      std::cout << "WrongAnimal: copy constructor called" << std::endl;
+     *this = copy;
 }
 
 WrongAnimal &WrongAnimal::operator=(const WrongAnimal &other) {

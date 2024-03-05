@@ -7,8 +7,6 @@ int main() {
     ScavTrap jim("Jim");   
 
     bob.attack("Jim");
-    jim.takeDamage(0);
-    jim.beRepaired(2);
     jim.guardGate();
     jim.attack("Bob");
     bob.takeDamage(20);

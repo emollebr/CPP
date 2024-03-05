@@ -9,12 +9,9 @@ int main() {
     FragTrap rob("Rob");
 
     bob.attack("Jim");
-    jim.takeDamage(0);
-    jim.beRepaired(2);
     jim.guardGate();
     jim.attack("Bob");
     bob.takeDamage(20);
-    rob.attack("Jim");
     rob.highFivesGuys();
     return 0;
 }

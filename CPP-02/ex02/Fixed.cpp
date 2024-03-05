@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emollebr <emollebr@student.42berlin.d      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/04 12:40:35 by emollebr          #+#    #+#             */
+/*   Updated: 2024/03/04 12:40:36 by emollebr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include <string>
 #include <cmath>
@@ -6,31 +18,31 @@
 /*---------------de- and constructors---------------*/
 Fixed::Fixed( void ) : _value(0)
 {
-    std::cout << "Default constructor called" << std::endl;
+    /*std::cout << "Default constructor called" << std::endl;*/
 }
 
 Fixed::Fixed(const Fixed &fixed)
 {
-    std::cout << "Copy constructor called" << std::endl;
+    /*std::cout << "Copy constructor called" << std::endl;*/
     this->setRawBits(fixed.getRawBits());
 }
 
 Fixed::Fixed(const int intValue) {
-    std::cout << "Int constructor called" << std::endl;
+    /*std::cout << "Int constructor called" << std::endl;*/
     this->_value = intValue << _fractionalBits;
 }
 
 Fixed::Fixed(const float floatValue) {
-    std::cout << "Float constructor called" << std::endl;
+    /*std::cout << "Float constructor called" << std::endl;*/
     this->_value = roundf(floatValue * (1 << _fractionalBits));
 }
 
 Fixed::~Fixed()
 {
-    std::cout << "Destructor called" << std::endl;
+    /*std::cout << "Destructor called" << std::endl;*/
 }
 
-/*---------------member functions---------------*/
+/*-----------------------------------------------------------------*/
 float Fixed::toFloat() const {
     return static_cast<float>(this->_value) / (1 << _fractionalBits);
 }
@@ -38,7 +50,6 @@ float Fixed::toFloat() const {
 int Fixed::toInt() const {
     return this->_value >> _fractionalBits;
 }
-
 
 int Fixed::getRawBits( void ) const
 {
@@ -51,9 +62,9 @@ void    Fixed::setRawBits(int const raw)
     this->_value = raw;
 }
 
-/*---------------operator overloaded functions---------------*/
+/*-----------------------------------------------------------------*/
 Fixed &Fixed::operator=(const Fixed &fixed) {
-    std::cout << "Copy assignment operator called" << std::endl;
+    /*std::cout << "Copy assignment operator called" << std::endl;*/
     if (this != &fixed) {
         this->_value = fixed.getRawBits();
     }
@@ -83,12 +94,13 @@ bool Fixed::operator!=(const Fixed& fixed) const {
     return this->getRawBits() != fixed.getRawBits();
 }
 
+/*-----------------------------------------------------------------*/
 Fixed Fixed::operator+(const Fixed& fixed) const {
-    return Fixed(this->_value + fixed.getRawBits());
+    return Fixed(this->toFloat() + fixed.toFloat());
 }
 
 Fixed Fixed::operator-(const Fixed& fixed) const {
-    return Fixed(this->_value - fixed.getRawBits());
+    return Fixed(this->toFloat() - fixed.toFloat());
 }
 Fixed   Fixed::operator*( const Fixed &fixed ) const {
     return Fixed( this->toFloat() * fixed.toFloat() );
@@ -98,29 +110,31 @@ Fixed   Fixed::operator/( const Fixed &fixed ) const {
     return Fixed( this->toFloat() / fixed.toFloat() );
 }
 
+/*-----------------------------------------------------------------*/
+
 Fixed& Fixed::operator++() {
-    ++this->_value;
+    ++(this->_value);
     return *this;
 }
 
 Fixed Fixed::operator++(int) {
     Fixed tmp(*this);
-    ++(*this);
+    this->_value++;
     return tmp;
 }
 
 Fixed& Fixed::operator--() {
-    --this->_value;
+    --(this->_value);
     return *this;
 }
 
 Fixed Fixed::operator--(int) {
     Fixed tmp(*this);
-    --(*this);
+    this->_value--;
     return tmp;
 }
 
-/*---------------min/max overloaded functions---------------*/
+/*-----------------------------------------------------------------*/
 Fixed&       Fixed::min(Fixed &n1, Fixed &n2) {
     if (n1.getRawBits() < n2.getRawBits())
         return n1;

@@ -14,6 +14,7 @@ int main()
     j->makeSound(); //will output the cat sound!
     std::cout << i->getType() << " says:" << std::endl;
     i->makeSound();
+     std::cout << "animal says:" << std::endl;
     meta->makeSound();
 
     //test copying
@@ -29,10 +30,13 @@ int main()
     const WrongAnimal* a = new WrongDog();
     const WrongAnimal* b = new WrongCat();
 
-    std::cout << a->getType() << " says:" << std::endl;
+    std::cout << a->getType() << " as WrongAnimal says: " << std::endl;
     a->makeSound(); //will output the cat sound!
-    std::cout << b->getType() << " says:" << std::endl;
+    std::cout << b->getType() << "as WrongAnimal says: " << std::endl;
     b->makeSound();
+    WrongCat CorrectWrong;
+    std::cout << "WrongCat says:" << std::endl;
+    CorrectWrong.makeSound();
     //wrong->makeSound();
 
     delete a;

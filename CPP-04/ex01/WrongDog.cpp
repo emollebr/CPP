@@ -6,9 +6,10 @@ WrongDog::WrongDog( void ) : WrongAnimal()
     std::cout << "WrongDog was created" << std::endl;
 }
 
-WrongDog::WrongDog(const WrongDog &copy) : _brain(new Brain(*(copy._brain)))
+WrongDog::WrongDog(const WrongDog &copy) : WrongAnimal(copy)
 {
      std::cout << "WrongDog: copy constructor called" << std::endl;
+    _brain = new Brain();
      *this = copy;
 }
 
@@ -16,6 +17,7 @@ WrongDog &WrongDog::operator=(const WrongDog &other) {
     std::cout << "WrongDog: Copy assignment operator called" << std::endl;
     if (this != &other) {
         type = other.type;
+        *_brain = *other._brain;
     }
     return *this;
 }

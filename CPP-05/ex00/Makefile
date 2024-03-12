@@ -1,10 +1,8 @@
-NAME := ex01
+NAME := ex00
 C := c++
 CFLAGS := -Wall -Wextra -Werror -std=c++98 
 INC:= -I.
-SRCS:= main.cpp Animal.cpp Dog.cpp Cat.cpp \
-	WrongAnimal.cpp WrongDog.cpp WrongCat.cpp \
-	Brain.cpp
+SRCS:= main.cpp Bureaucrat.cpp
 OBJS := $(SRCS:.cpp=.o)
 ##########################################################################
 

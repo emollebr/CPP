@@ -3,6 +3,7 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 #include <iostream>
 
 int main() {
@@ -11,19 +12,23 @@ int main() {
 
         // Create a bureaucrat
         Bureaucrat bureaucrat("John", 2);
+        Intern intern;
 
         // Create a form
-        ShrubberyCreationForm shrub("test");
-        std::cout << shrub << std::endl;
+        AForm* shrub = intern.makeForm("shrubbery creation", "test");
+        std::cout << *shrub << std::endl;
 
         // Try signing the form with bureaucrat
-        bureaucrat.signForm(shrub);
+        bureaucrat.signForm(*shrub);
 
         //Try for the form to be signed
-        shrub.beSigned(bureaucrat);
+        shrub->beSigned(bureaucrat);
 
         //Try executing the form with the bureaucrat
-        shrub.execute(bureaucrat);
+        shrub->execute(bureaucrat);
+
+        //Delete the form
+        delete shrub;
     } catch (std::exception & e) {
         std::cerr << e.what() << std::endl;
     }
@@ -31,19 +36,22 @@ int main() {
         std::cout << "\nRobotomy Test:\n" << std::endl;
         // Create a bureaucrat
         Bureaucrat bureaucrat("Bill", 2);
+        Intern intern;
 
         // Create a form
-        RobotomyRequestForm robot("test");
-        std::cout << robot << std::endl;
+        AForm* robot = intern.makeForm("non existing form", "test");
+        //AForm* robot = intern.makeForm("robotomy request", "test");
+
+        std::cout << *robot << std::endl;
 
         // Try signing the form with bureaucrat
-        bureaucrat.signForm(robot);
+        bureaucrat.signForm(*robot);
 
         //Try for the form to be signed
-        robot.beSigned(bureaucrat);
+        robot->beSigned(bureaucrat);
 
         //Try executing the form with the bureaucrat
-        robot.execute(bureaucrat);
+        robot->execute(bureaucrat);
     } catch (std::exception & e) {
         std::cerr << e.what() << std::endl;
     }

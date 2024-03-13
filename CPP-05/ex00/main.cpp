@@ -22,7 +22,7 @@ int main() {
         Bureaucrat b2("Alice", 0); // Should throw exception
         std::cout << "Created bureaucrat: " << b2 << std::endl;
     } catch (std::exception & e) {
-        std::cerr << "Excception: " << e.what() << std::endl;
+        std::cerr << "Exception: " << e.what() << std::endl;
     }
 
     // Attempt to create a bureaucrat with grade too low
@@ -30,7 +30,7 @@ int main() {
         Bureaucrat b3("Bob", 151); // Should throw exception
         std::cout << "Created bureaucrat: " << b3 << std::endl;
     } catch (std::exception & e) {
-        std::cerr << "Excception: " << e.what() << std::endl;
+        std::cerr << "Exception: " << e.what() << std::endl;
     }
     
     return 0;

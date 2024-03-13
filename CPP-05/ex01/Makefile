@@ -1,5 +1,5 @@
 NAME := ex01
-C := c++ -g3
+C := c++
 CFLAGS := -Wall -Wextra -Werror -std=c++98 
 INC:= -I.
 SRCS:= main.cpp Bureaucrat.cpp Form.cpp

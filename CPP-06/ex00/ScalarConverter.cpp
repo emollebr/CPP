@@ -120,7 +120,10 @@ static void	display(char c) {
     std::cout << "char: " << c << std::endl <<
     "int: " << static_cast<int>(c) << std::endl <<
     "float: " << static_cast<float>(c) << ".0f" << std::endl <<
-    "double: " << static_cast<double>(c) << std::endl; 
+    "double: " << static_cast<double>(c);
+    if (std::abs(c - static_cast<int>(c)) == 0)
+        std::cout << ".0";
+    std::cout << std::endl;
 }
 
 static void	display(int c) {
@@ -130,7 +133,10 @@ static void	display(int c) {
         std::cout << "char: " << static_cast<char>(c) << std::endl;
     std::cout << "int: " << c << std::endl <<
     "float: " << static_cast<float>(c) << ".0f" << std::endl <<
-    "double: " << static_cast<double>(c) << std::endl; 
+    "double: " << static_cast<double>(c);
+    if (std::abs(c - static_cast<int>(c)) == 0)
+        std::cout << ".0";
+    std::cout << std::endl;
 }
 
 
@@ -145,7 +151,7 @@ void    display(double c)
         std::cout << "int: " << static_cast<int>(c) << std::endl;
     }
     else {
-        std::cout << "char:" << static_cast<char>(c) << std::endl;
+        std::cout << "char: " << static_cast<char>(c) << std::endl;
         std::cout << "int: " << static_cast<int>(c) << std::endl;
     }
     std::cout   << "float: " << static_cast<float>(c);
@@ -153,7 +159,10 @@ void    display(double c)
         std::cout << ".0f" << std::endl;
     else
         std::cout << "f" << std::endl;
-    std::cout << "double: " << c << std::endl;
+    std::cout << "double: " << c;
+    if (std::abs(c - static_cast<int>(c)) == 0)
+        std::cout << ".0";
+    std::cout << std::endl;
 }
 
 static void   display(float c)
@@ -167,7 +176,7 @@ static void   display(float c)
         std::cout << "int: " << static_cast<int>(c) << std::endl;
     }
     else {
-        std::cout << "char:" << static_cast<char>(c) << std::endl;
+        std::cout << "char: " << static_cast<char>(c) << std::endl;
         std::cout << "int: " << static_cast<int>(c) << std::endl;
     }
     std::cout   << "float: " << c;
@@ -175,7 +184,10 @@ static void   display(float c)
         std::cout << ".0f" << std::endl;
     else
         std::cout << "f" << std::endl;
-    std::cout << "double: " << static_cast<double>(c) << std::endl;
+    std::cout << "double: " << static_cast<double>(c);
+    if (std::abs(c - static_cast<int>(c)) == 0)
+        std::cout << ".0";
+    std::cout << std::endl;
 }
 
 void	ScalarConverter::convert(const char *s) {

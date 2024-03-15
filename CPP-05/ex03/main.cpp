@@ -32,6 +32,7 @@ int main() {
     } catch (std::exception & e) {
         std::cerr << e.what() << std::endl;
     }
+
     try {
         std::cout << "\nRobotomy Test:\n" << std::endl;
         // Create a bureaucrat
@@ -55,6 +56,7 @@ int main() {
     } catch (std::exception & e) {
         std::cerr << e.what() << std::endl;
     }
+    
     try {
         std::cout << "\nPresidential Test:\n" << std::endl;
         // Create a bureaucrat

@@ -5,8 +5,8 @@ int main() {
 
     data.name = "data";
     data.value = 1;
-    
-    std::cout << "Is the deserialized pointer equal to the original? = " <<
-    (Serializer::deserialize( Serializer::serialize(&data)) == &data) << std::endl;
+
+    std::cout << "Is the deserialized pointer equal to the original? \n" <<
+    (Serializer::deserialize( Serializer::serialize(&data)) == &data ? "Yes" : "No") << std::endl;
 
 }
